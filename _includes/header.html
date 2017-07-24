@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <meta name="description" content="<?= the_excerpt(); ?>">
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+    <!-- CSS -->
+    <link rel='stylesheet' id='rs-plugin-settings-css'  href='/css/foundation.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='rs-plugin-settings-css'  href='/css/ionicons.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='rs-plugin-settings-css'  href='/css/slick.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='rs-plugin-settings-css'  href='/css/custom.css' type='text/css' media='all' />
+
+</head>
+
+<body <?php body_class(); ?>>
+
+    <!-- Start Top Bar -->
+    <div class="header top-bar" data-sticky-container>
+        <div class="row">
+            <?php /**
+                * Displays a navigation menu
+                * @param array $args Arguments
+                */
+                $args = array(
+                    'theme_location' => 'menu_principal',
+                    'menu' => '',
+                    'container_class' => 'top-bar-left',
+                    'container_id' => '',
+                    'menu_class' => 'menu',
+                    'menu_id' => '',
+                    'echo' => true,
+                    'fallback_cb' => 'wp_dpp_navwalker::fallback',
+                    'walker' => new wp_dpp_navwalker(),
+                    'before' => '',
+                    'after' => '',
+                    'link_before' => '',
+                    'link_after' => '',
+                    'items_wrap' => '<ul class = "%2$s">%3$s</ul>',
+                    'depth' => 0
+                );
+            
+                wp_nav_menu( $args ); 
+            ?>
+            <!-- End Top Bar -->
+
+            <div class="top-bar-right">
+                <button class="button search">
+                    <i class="ion-search"></i>
+                    <form class="search-form" action="<?php echo home_url( '/' ); ?>">
+                        <input 
+                        type="search" class="search-field"
+                        placeholder="<?php echo esc_attr_x( 'Search', 'placeholder' ) ?>"
+                        value="<?php echo get_search_query() ?>" name="s"
+                        title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
+                    </form>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Page Wrapper -->
+    <div class="page-wrapper">
+        <div class="blog-title">
+            <div class="row column text-center">
+                <a href="<?php echo home_url(); ?>"><h1>Dress Pour Purpose</h1></a>
+            </div>
+        </div>
