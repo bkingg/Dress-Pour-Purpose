@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page.title }} - {{ site.title }}</title>
-    <meta name="description" content="<?= the_excerpt(); ?>">
+    <meta name="description" content="{{ site.content | truncate_words: 30 }}">
 
     <!-- FAVICON -->
     <link rel="shortcut icon" href="/images/favicon.png">
@@ -18,7 +18,7 @@
 
 </head>
 
-<body <?php body_class(); ?>>
+<body>
 
     <!-- Start Top Bar -->
     <div class="header top-bar" data-sticky-container>
@@ -68,6 +68,6 @@
     <div class="page-wrapper">
         <div class="blog-title">
             <div class="row column text-center">
-                <a href="<?php echo home_url(); ?>"><h1>Dress Pour Purpose</h1></a>
+                <a href="/"><h1>{{ site.title }}</h1></a>
             </div>
         </div>
