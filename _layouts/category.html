@@ -1,0 +1,9 @@
+{% include header.html %}
+
+{% assign posts = site.posts | where:'categories', page.title  %}
+
+{% for post in posts %}
+    test
+{% endfor %}
+
+{% include footer.html %}

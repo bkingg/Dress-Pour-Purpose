@@ -5,6 +5,12 @@ collections:
   posts:
     title: Posts
     output: true
+  categories:
+    title: categories
+    output: true
+  slides:
+    title: slides
+    output: true
   uploads:
     title: Uploads
     output: true
