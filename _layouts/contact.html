@@ -1,0 +1,38 @@
+{% include header.html %}
+
+    <div class="row medium-8 large-10 columns">
+
+        <div class="post small-12 column">
+            <div class="post__info small-12 column">
+                <h3 class="post__title text-center">{{ page.title }}</h3>
+                <div class="post__content">{{ page.content }}</div>
+
+                <form id="myForm" method="post" data-abide>  
+                    
+                    <div class="input-wrapper">
+                        <label>Name</label>
+                        <input type="text" placeholder="Full Name" required>
+                        <small class="error">Your full name is required.</small>
+                    </div>
+                    
+                    <div class="input-wrapper">
+                        <label>Email</label>
+                        <input type="email" placeholder="username@address.com" required>
+                        <small class="error">An email address is required.</small>
+                    </div>
+                                        
+                    <div class="input-wrapper">
+                        <label>Your Message</label>
+                        <textarea placeholder="Enter your message here" required></textarea>
+                        <small class="error">Your message is required.</small>
+                    </div>
+                    
+                    <input type="submit" class="nice blue radius button" value="Send Message"></button></a>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+{% include footer.html %}
