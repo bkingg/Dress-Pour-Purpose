@@ -1,9 +1,58 @@
 {% include header.html %}
 
-{% assign posts = site.posts | where:'categories', page.title  %}
+{% assign page_slug = page.title | slugify %}
+{% assign category_field = '_categories/' | append: page_slug | append: '.md' %}
 
-{% for post in posts %}
-    test
-{% endfor %}
+{% assign posts = site.posts | where:'categories', category_field  %}
+
+<div class="row medium-8 large-10 columns">
+    {% if posts.size > 0 %}
+                
+        {% for post in posts %}
+
+            <div class="post small-12 column">
+                {% if post.image %}
+                    <a class="post__thumbnail text-center" href="{{ post.url }}" title="{{ post.title }}" >
+                        <img src="{{ post.image }}" alt="{{ post.title }}">
+                    </a>
+                {% endif %}
+                <div class="post__info small-12 column">
+                    <div class="post__category text-center">{{ post.categories | remove: '_categories/' | remove: '.md' | remove: '["' | remove: '"]' }}</div>
+                    <h3 class="post__title text-center">{{ post.title }}</h3>
+                    <div class="post__content">{{ post.content | truncatewords: 30, '...' }}</div>
+                    <div class="text-center">
+                        <a class="post__button button" href="{{ post.url }}" title="{{ post.title }}" >
+                            Read More
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-6 column text-left">
+                            <span class="post__date">{{ post.date }}</span>
+                        </div>
+                        <div class="small-6 column text-right">
+                            <ul class="post__social-links">
+                                <li><a class="icon-circle" href="http://www.facebook.com/sharer.php?u={{ post.url }}&amp;t={{ post.title }}" title="Share on Facebook."><i class="ion-social-facebook"></i></a></li>
+                                <li><a class="icon-circle" href="http://twitter.com/home/?status={{ post.title }} - {{ post.url }} ?>" title="Tweet this!"><i class="ion-social-twitter"></i></a></li>
+                                <li><a class="icon-circle" href="https://www.instagram.com/Jessyjesswardrobe/"><i class="ion-social-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+        <div class="small-6 columns">
+            <div class="pagination__previous text-left"><a class="button" href="">Newer Posts</a></div>
+        </div>
+        <div class="small-6 columns">
+            <div class="pagination__next text-right"><a class="button" href="">Older Posts</a></div>
+        </div>
+
+    {% else %}
+        <p class="no-post">Sorry, no posts matched your criteria.</p>
+    {% endif %}
+</div>
 
 {% include footer.html %}

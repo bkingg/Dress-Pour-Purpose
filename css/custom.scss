@@ -147,7 +147,12 @@ body {
 ========================*/
 
 .post {
-  .post__thumbnail {}
+  .post__thumbnail {
+    display: block;
+    img{
+      width: 100%;
+    }
+  }
   .post__info {
     background-color: white;
     -webkit-box-shadow: 0 5px 4px -4px rgba(190, 190, 190, 0.1);

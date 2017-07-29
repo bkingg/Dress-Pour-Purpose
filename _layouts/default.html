@@ -23,18 +23,20 @@
 
         {% endif %}
 
+        {% assign posts = site.posts %}
+
         {% if posts.size > 0 %}
             
-            {% for post in site.posts %}
+            {% for post in posts %}
 
                 <div class="post small-12 column">
                     {% if post.image %}
-                        <a class="post__thumbnail row text-center" href="{{ post.url }}" title="{{ post.title }}" >
+                        <a class="post__thumbnail text-center" href="{{ post.url }}" title="{{ post.title }}" >
                             <img src="{{ post.image }}" alt="{{ post.title }}">
                         </a>
                     {% endif %}
                     <div class="post__info small-12 column">
-                        <div class="post__category text-center">{{ post.categories }}</div>
+                        <div class="post__category text-center">{{ post.categories | remove: '_categories/' | remove: '.md' | remove: '["' | remove: '"]' }}</div>
                         <h3 class="post__title text-center">{{ post.title }}</h3>
                         <div class="post__content">{{ post.content | truncatewords: 30, '...' }}</div>
                         <div class="text-center">
@@ -61,10 +63,10 @@
             {% endfor %}
 
             <div class="small-6 columns">
-                <div class="pagination__previous text-left"><a href="">Newer Posts</a></div>
+                <div class="pagination__previous text-left"><a class="button" href="">Newer Posts</a></div>
             </div>
             <div class="small-6 columns">
-                <div class="pagination__next text-right"><a href="">Older Posts</a></div>
+                <div class="pagination__next text-right"><a class="button" href="">Older Posts</a></div>
             </div>
 
         {% else %}

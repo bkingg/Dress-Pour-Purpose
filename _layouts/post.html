@@ -1,0 +1,60 @@
+{% include header.html %}
+
+    <div class="row medium-8 large-10 columns">
+
+        {% assign post = page %}          
+        <div class="post small-12 column">
+            {% if post.image %}
+                <div class="post__thumbnail text-center">
+                    <img src="{{ post.image }}" alt="{{ post.title }}">
+                </div>
+            {% endif %}
+            <div class="post__info small-12 column">
+                <div class="post__category text-center">{{ post.categories | remove: '_categories/' | remove: '.md' | remove: '["' | remove: '"]' }}</div>
+                <h3 class="post__title text-center">{{ post.title }}</h3>
+                <div class="post__content">{{ post.content }}</div>
+
+                <div class="row">
+                    <div class="small-6 column text-left">
+                        <span class="post__date">{{ post.date }}</span>
+                    </div>
+                    <div class="small-6 column text-right">
+                        <ul class="post__social-links">
+                            <li><a class="icon-circle" href="http://www.facebook.com/sharer.php?u={{ post.url }}&amp;t={{ post.title }}" title="Share on Facebook."><i class="ion-social-facebook"></i></a></li>
+                            <li><a class="icon-circle" href="http://twitter.com/home/?status={{ post.title }} - {{ post.url }} ?>" title="Tweet this!"><i class="ion-social-twitter"></i></a></li>
+                            <li><a class="icon-circle" href="https://www.instagram.com/Jessyjesswardrobe/"><i class="ion-social-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="comments">
+        <div class="row medium-8 large-10 columns">
+            <div id="disqus_thread" class="small-12 column"></div>
+        </div>
+    </div>
+
+    <script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//dresspourpurpose-com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+{% include footer.html %}
